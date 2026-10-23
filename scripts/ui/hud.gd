@@ -32,11 +32,12 @@ var _fry_station: Station
 var _hint: Label
 var _refresh := 0.0
 var _slow_refresh := 0
+var _fry_hint_shown := false
 var _last_speed := 1.0
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_build_top_bar()
 	_build_toasts()
@@ -49,9 +50,7 @@ func _ready() -> void:
 	_hint = UIKit.label("", 15, Color.WHITE)
 	_hint.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.7))
 	_hint.add_theme_constant_override("outline_size", 6)
-	_hint.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	_hint.position = Vector2(-300, -150)
-	_hint.custom_minimum_size = Vector2(600, 0)
+	UIKit.place(_hint, Control.PRESET_CENTER_BOTTOM, -300, -170, 300, -110, Control.GROW_DIRECTION_BOTH, Control.GROW_DIRECTION_BEGIN)
 	_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_hint.autowrap_mode = TextServer.AUTOWRAP_WORD
 	add_child(_hint)
@@ -70,6 +69,7 @@ func bind(w: StoreWorld) -> void:
 	_fry.visible = false
 	_restock.visible = false
 	_rebuild_crew()
+	_fry_hint_shown = false
 	_set_speed(1.0)
 	if Game.day == 1 and Game.settings.get("show_tutorial", true):
 		_hint.text = "Your crew works on their own. Tap a crew member to set their focus, tap a frying Fryer to pull the batch yourself, and keep an eye on stock!"
@@ -89,12 +89,12 @@ func _build_top_bar() -> void:
 	sb.content_margin_top = 4
 	sb.content_margin_bottom = 4
 	bar.add_theme_stylebox_override("panel", sb)
-	bar.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
 	bar.custom_minimum_size = Vector2(0, 52)
 	add_child(bar)
 	var h := UIKit.hbox([], 14)
 	bar.add_child(h)
-	var logo := UIKit.label("🍩", 26)
+	var logo := UIKit.donut_icon(36)
 	h.add_child(logo)
 	_money = UIKit.label("$0", 22, UIKit.GREEN, true)
 	_money.custom_minimum_size = Vector2(130, 0)
@@ -172,9 +172,7 @@ func clear_event() -> void:
 
 func _build_toasts() -> void:
 	_toasts = VBoxContainer.new()
-	_toasts.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	_toasts.position = Vector2(-260, 62)
-	_toasts.custom_minimum_size = Vector2(520, 0)
+	UIKit.place(_toasts, Control.PRESET_CENTER_TOP, -260, 62, 260, 62, Control.GROW_DIRECTION_BOTH, Control.GROW_DIRECTION_END)
 	_toasts.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_toasts)
 
@@ -205,9 +203,8 @@ func show_toast(text: String, color: Color) -> void:
 
 func _build_card() -> void:
 	_card = PanelContainer.new()
-	_card.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-	_card.position = Vector2(12, -420)
 	_card.custom_minimum_size = Vector2(300, 0)
+	UIKit.place(_card, Control.PRESET_BOTTOM_LEFT, 12, -100, 312, -100, Control.GROW_DIRECTION_END, Control.GROW_DIRECTION_BEGIN)
 	_card_box = UIKit.vbox([], 6)
 	_card.add_child(_card_box)
 	_card.visible = false
@@ -316,8 +313,7 @@ func _build_crew() -> void:
 	sb.content_margin_top = 6
 	sb.content_margin_bottom = 6
 	p.add_theme_stylebox_override("panel", sb)
-	p.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-	p.position = Vector2(12, -86)
+	UIKit.place(p, Control.PRESET_BOTTOM_LEFT, 12, -10, 12, -10, Control.GROW_DIRECTION_END, Control.GROW_DIRECTION_BEGIN)
 	_crew = UIKit.hbox([], 8)
 	p.add_child(_crew)
 	add_child(p)
@@ -376,9 +372,7 @@ func _update_crew() -> void:
 
 func _build_tickets() -> void:
 	_tickets = UIKit.vbox([], 4)
-	_tickets.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	_tickets.position = Vector2(-236, 64)
-	_tickets.custom_minimum_size = Vector2(224, 0)
+	UIKit.place(_tickets, Control.PRESET_TOP_RIGHT, -236, 64, -12, 64, Control.GROW_DIRECTION_BEGIN, Control.GROW_DIRECTION_END)
 	_tickets.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_tickets)
 
@@ -503,9 +497,7 @@ func _update_dashboard() -> void:
 
 func _build_restock() -> void:
 	_restock = PanelContainer.new()
-	_restock.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	_restock.position = Vector2(-430, 62)
-	_restock.custom_minimum_size = Vector2(420, 0)
+	UIKit.place(_restock, Control.PRESET_TOP_RIGHT, -440, 62, -10, 62, Control.GROW_DIRECTION_BEGIN, Control.GROW_DIRECTION_END)
 	_restock_box = UIKit.vbox([], 4)
 	_restock.add_child(_restock_box)
 	_restock.visible = false
@@ -552,9 +544,7 @@ func _rebuild_restock() -> void:
 
 func _build_fry() -> void:
 	_fry = PanelContainer.new()
-	_fry.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	_fry.position = Vector2(-230, -250)
-	_fry.custom_minimum_size = Vector2(460, 0)
+	UIKit.place(_fry, Control.PRESET_CENTER_BOTTOM, -240, -110, 240, -110, Control.GROW_DIRECTION_BOTH, Control.GROW_DIRECTION_BEGIN)
 	var v := UIKit.vbox([], 8)
 	v.add_child(UIKit.label("Pull the batch in the green zone!", 18, UIKit.INK, true))
 	_fry_bar = Control.new()
@@ -572,7 +562,8 @@ func _build_fry() -> void:
 
 
 func _on_fry_started(st: Station) -> void:
-	if Game.day <= 2 and not _fry.visible:
+	if Game.day <= 2 and not _fry.visible and not _fry_hint_shown:
+		_fry_hint_shown = true
 		show_toast("A batch is frying — tap the Fryer to pull it yourself!", Color("#ff8a3d"))
 	if _fry.visible and _fry_station == null:
 		_fry_station = st

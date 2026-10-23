@@ -82,7 +82,7 @@ func _process(_d: float) -> bool:
 		9:
 			shot("06_rush_restock")
 			main.hud._toggle_restock()
-			G.time_scale = 10.0
+			G.time_scale = 30.0
 			step = 10
 			return false
 		10:
@@ -93,7 +93,7 @@ func _process(_d: float) -> bool:
 			return false
 		11:
 			shot("07_evening")
-			G.time_scale = 10.0
+			G.time_scale = 30.0
 			step = 12
 			return false
 		12:

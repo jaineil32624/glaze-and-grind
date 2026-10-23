@@ -203,6 +203,39 @@ static func stars(r: float) -> String:
 	return s
 
 
+## Anchor a control to a preset and set its offsets explicitly (code-built UI
+## can't rely on `position`, which ignores anchors).
+static func place(c: Control, preset: int, l: float, t: float, r: float, b: float,
+		grow_h: int = Control.GROW_DIRECTION_END, grow_v: int = Control.GROW_DIRECTION_END) -> void:
+	c.set_anchors_preset(preset)
+	c.offset_left = l
+	c.offset_top = t
+	c.offset_right = r
+	c.offset_bottom = b
+	c.grow_horizontal = grow_h
+	c.grow_vertical = grow_v
+
+
+## The brand donut, drawn (no emoji font needed).
+static func donut_icon(sz: float) -> Control:
+	var c := Control.new()
+	c.custom_minimum_size = Vector2(sz, sz)
+	c.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	c.draw.connect(func():
+		var ctr := Vector2(sz, sz) * 0.5
+		var r := sz * 0.46
+		c.draw_circle(ctr + Vector2(0, 1.5), r, Color("#c98a3c"))
+		c.draw_circle(ctr, r, Color("#f0b860"))
+		c.draw_circle(ctr - Vector2(0, 1.5), r * 0.82, PINK)
+		c.draw_circle(ctr, r * 0.32, Color("#fff8ec"))
+		var sprinkle_cols := [Color("#4f8cff"), Color("#ffd23f"), Color("#2fae6b"), Color.WHITE]
+		for i in 7:
+			var a := i * TAU / 7.0 + 0.3
+			var p := ctr + Vector2.from_angle(a) * r * 0.6
+			c.draw_line(p, p + Vector2.from_angle(a + 1.2) * sz * 0.08, sprinkle_cols[i % 4], maxf(1.5, sz * 0.05)))
+	return c
+
+
 static func clear(node: Node) -> void:
 	for c in node.get_children():
 		node.remove_child(c)

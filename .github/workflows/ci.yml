@@ -57,32 +57,65 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Set up Android signing (debug keystore)
+      - name: Set up Android SDK path + signing keystore
         if: matrix.dir == 'android'
         run: |
-          keytool -genkeypair -v -keystore debug.keystore -storepass android -alias androiddebugkey \
-            -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          keytool -genkeypair -v -keystore $GITHUB_WORKSPACE/ci.keystore -storepass android -alias androiddebugkey \
+            -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Glaze and Grind,O=Glaze and Grind,C=US"
           mkdir -p ~/.config/godot
-          cat > ~/.config/godot/editor_settings-4.3.tres <<EOF
-          [gd_resource type="EditorSettings" format=3]
-          [resource]
-          export/android/android_sdk_path = "/usr/lib/android-sdk"
-          export/android/debug_keystore = "$GITHUB_WORKSPACE/debug.keystore"
-          export/android/debug_keystore_user = "androiddebugkey"
-          export/android/debug_keystore_pass = "android"
-          EOF
+          for f in editor_settings-4.tres editor_settings-4.3.tres; do
+            printf '%s\n' '[gd_resource type="EditorSettings" format=3]' '' '[resource]' \
+              'export/android/android_sdk_path = "/usr/lib/android-sdk"' \
+              "export/android/debug_keystore = \"$GITHUB_WORKSPACE/ci.keystore\"" \
+              'export/android/debug_keystore_user = "androiddebugkey"' \
+              'export/android/debug_keystore_pass = "android"' > ~/.config/godot/$f
+          done
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PATH=$GITHUB_WORKSPACE/ci.keystore" >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_USER=androiddebugkey" >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD=android" >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PATH=$GITHUB_WORKSPACE/ci.keystore" >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey" >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android" >> $GITHUB_ENV
       - name: Import
         run: godot --headless --editor --quit --path . || true
       - name: Export
         run: |
           mkdir -v -p builds/${{ matrix.dir }}
-          godot --headless --path . --export-release "${{ matrix.preset }}" builds/${{ matrix.dir }}/${{ matrix.file }}
+          godot --headless --path . --export-release "${{ matrix.preset }}" builds/${{ matrix.dir }}/${{ matrix.file }} 2>&1 | tee export.log
           ls -la builds/${{ matrix.dir }}
+          test -s builds/${{ matrix.dir }}/${{ matrix.file }} || (cat export.log; exit 1)
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.EXPORT_NAME }}-${{ matrix.dir }}
           path: builds/${{ matrix.dir }}
+
+  pages:
+    name: Deploy website + browser build
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+    needs: export
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: GlazeAndGrind-web
+          path: web-build
+      - name: Assemble site
+        run: |
+          mkdir -p public/play public/screenshots public/assets
+          cp site/index.html public/
+          cp -r web-build/* public/play/
+          cp docs/screenshots/*.png public/screenshots/ || true
+          cp -r assets/concept assets/marketing public/assets/
+          touch public/.nojekyll
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
 
   release:
     name: GitHub Release
@@ -92,16 +125,23 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           path: dist
-      - name: Zip builds
+      - name: Package downloads
         run: |
-          cd dist
-          for d in */; do (cd "$d" && zip -r "../${d%/}.zip" .); done
-          ls -la
+          mkdir -p upload
+          cp dist/GlazeAndGrind-android/GlazeAndGrind.apk upload/
+          cp dist/GlazeAndGrind-windows/GlazeAndGrind.exe upload/
+          cp dist/GlazeAndGrind-linux/GlazeAndGrind.x86_64 upload/
+          chmod +x upload/GlazeAndGrind.x86_64
+          for d in android windows linux web; do (cd dist/GlazeAndGrind-$d && zip -r ../../upload/GlazeAndGrind-$d.zip .); done
+          cp assets/marketing/github_social_preview.png upload/
+          ls -la upload
       - uses: softprops/action-gh-release@v2
         with:
-          files: dist/*.zip
-          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || startsWith(github.ref, 'refs/tags/v0.') }}
-          generate_release_notes: true
+          files: upload/*
+          body_path: .github/release_notes.md
+          prerelease: false
+          make_latest: true

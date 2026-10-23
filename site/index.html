@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glaze &amp; Grind — Donut &amp; Coffee Shop Tycoon</title>
+<meta name="description" content="Run a bustling donut and coffee shop. Autonomous crew, rush hours, upgrades and expansion. Play free in your browser or download for Android, Windows and Linux.">
+<meta property="og:title" content="Glaze & Grind — Donut & Coffee Shop Tycoon">
+<meta property="og:description" content="Run the rush. Train your crew. Build a donut empire. Play free in your browser.">
+<meta property="og:image" content="assets/marketing/github_social_preview.png">
+<meta name="theme-color" content="#ff6f91">
+<link rel="icon" href="assets/marketing/app_icon_512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ff6f91; --pink-d: #e8457a; --cream: #fff8ec; --peach: #ffe9d6; --ink: #3a2a22; --muted: #8a7568;
+    --blue: #4f8cff; --green: #2fae6b; --yellow: #ffd23f; --orange: #ff8a3d; --purple: #c45bff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Poppins, system-ui, sans-serif; background: var(--peach); color: var(--ink); }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  header.hero { background: linear-gradient(135deg, #ff9fb5, var(--pink-d)); color: #fff; padding: 56px 0 72px; overflow: hidden; position: relative; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: center; }
+  .hero h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1; margin: 0 0 12px; font-weight: 800; text-shadow: 0 4px 0 rgba(0,0,0,.12); }
+  .hero p.tag { font-size: 20px; margin: 0 0 28px; opacity: .95; }
+  .hero img.shot { width: 100%; border-radius: 18px; box-shadow: 0 18px 40px rgba(0,0,0,.25); border: 6px solid #fff; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 14px; font-weight: 700; text-decoration: none;
+         border-bottom: 5px solid rgba(0,0,0,.2); transition: transform .08s; font-size: 17px; }
+  .btn:active { transform: translateY(3px); border-bottom-width: 2px; }
+  .btn.play { background: var(--yellow); color: var(--ink); font-size: 20px; padding: 16px 28px; }
+  .btn.dl { background: #fff; color: var(--pink-d); }
+  .btn svg { width: 22px; height: 22px; }
+  .badges { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.22); padding: 4px 12px; border-radius: 99px; font-size: 13px; font-weight: 700; }
+  section { padding: 56px 0; }
+  h2 { font-size: 34px; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .card { background: #fff; border-radius: 18px; padding: 22px; box-shadow: 0 6px 18px rgba(0,0,0,.07); }
+  .card h3 { margin: 0 0 6px; font-size: 20px; }
+  .card p { margin: 0; color: var(--muted); }
+  .dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: middle; }
+  .gallery { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+  .gallery figure { margin: 0; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,.07); cursor: zoom-in; }
+  .gallery img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+  .gallery figcaption { padding: 10px 14px; font-weight: 700; font-size: 14px; }
+  .downloads { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .dlcard { background: #fff; border-radius: 18px; padding: 20px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.07); border-bottom: 6px solid var(--c); display: block; }
+  .dlcard b { display: block; font-size: 20px; }
+  .dlcard span { color: var(--muted); font-size: 14px; }
+  .palette { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sw { width: 128px; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.07); }
+  .sw div { height: 72px; }
+  .sw p { margin: 0; padding: 8px 10px; font-size: 13px; font-weight: 700; }
+  .sw small { display: block; color: var(--muted); font-weight: 500; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
+  td, th { padding: 10px 14px; text-align: left; border-bottom: 1px solid #f2e3d3; }
+  th { background: var(--cream); }
+  kbd { background: var(--cream); border: 1px solid #e2cdb8; border-bottom-width: 3px; border-radius: 6px; padding: 1px 7px; font-size: 13px; }
+  footer { background: var(--ink); color: #fff; padding: 28px 0; text-align: center; }
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.8); display: none; align-items: center; justify-content: center; z-index: 10; cursor: zoom-out; padding: 16px; }
+  .lightbox img { max-width: 100%; max-height: 100%; border-radius: 12px; }
+  @media (max-width: 800px) { .hero .wrap { grid-template-columns: 1fr; } .hero { padding: 36px 0 48px; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <img src="assets/marketing/app_icon_512.png" width="88" height="88" alt="" style="border-radius:22px;box-shadow:0 8px 20px rgba(0,0,0,.2)">
+      <h1>Glaze &amp; Grind</h1>
+      <p class="tag">Run the morning rush, train an autonomous crew, nail the perfect fry, and grow one donut shop into a six-store empire.</p>
+      <div class="btns">
+        <a class="btn play" href="play/">▶ Play in your browser</a>
+        <a class="btn dl" href="#download">⬇ Download</a>
+      </div>
+      <div class="badges"><span class="badge">Free</span><span class="badge">Android · Windows · Linux · Web</span><span class="badge">Made with Godot 4</span><span class="badge">Open source</span></div>
+    </div>
+    <img class="shot" src="screenshots/02_morning_rush.png" alt="Morning rush gameplay">
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What you do</h2>
+    <p class="sub">A blend of restaurant rush and tycoon strategy.</p>
+    <div class="grid">
+      <div class="card"><h3><span class="dot" style="background:var(--pink)"></span>Survive the rush</h3><p>Customers flood in at 7am, noon and after work. Keep the queue moving or watch them walk out.</p></div>
+      <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>Manage a living crew</h3><p>Staff pick tasks on their own, get stressed, make mistakes and level up. Set their focus, send them on breaks, give raises.</p></div>
+      <div class="card"><h3><span class="dot" style="background:var(--orange)"></span>Pull the perfect batch</h3><p>Tap the fryer and stop the needle in the green zone for a PERFECT batch — or burn it.</p></div>
+      <div class="card"><h3><span class="dot" style="background:var(--green)"></span>Run the business</h3><p>Restock 13 ingredients, upgrade 7 stations, read the daily ledger and keep the lights on.</p></div>
+      <div class="card"><h3><span class="dot" style="background:var(--purple)"></span>Delight critics &amp; influencers</h3><p>A happy influencer can go viral. A food critic's review counts five times.</p></div>
+      <div class="card"><h3><span class="dot" style="background:var(--yellow)"></span>Build an empire</h3><p>Open the Mall, Highway, Airport, City Center and Mega Flagship stores and climb from Trainee to CEO.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream)">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <p class="sub">Captured straight from the game. Tap to enlarge.</p>
+    <div class="gallery" id="shots"></div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="sub">Latest release builds. Prefer no install? <a href="play/"><b>Play in the browser</b></a>.</p>
+    <div class="downloads">
+      <a class="dlcard" style="--c:var(--green)" href="https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.apk"><b>Android APK</b><span>Phones &amp; tablets · allow "install unknown apps"</span></a>
+      <a class="dlcard" style="--c:var(--blue)" href="https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.exe"><b>Windows</b><span>Single .exe — just run it</span></a>
+      <a class="dlcard" style="--c:var(--orange)" href="https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.x86_64"><b>Linux</b><span>x86_64 binary · chmod +x</span></a>
+      <a class="dlcard" style="--c:var(--purple)" href="https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind-web.zip"><b>Web build (.zip)</b><span>Host it on any static server</span></a>
+      <a class="dlcard" style="--c:var(--pink)" href="https://github.com/jaineil32624/glaze-and-grind/archive/refs/heads/main.zip"><b>Source code (.zip)</b><span>Open project.godot in Godot 4.3</span></a>
+      <a class="dlcard" style="--c:var(--ink)" href="https://github.com/jaineil32624/glaze-and-grind/releases"><b>All releases</b><span>Changelogs &amp; older versions</span></a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream)">
+  <div class="wrap">
+    <h2>Concept art</h2>
+    <p class="sub">Design targets for the art pass.</p>
+    <div class="gallery" id="art"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Controls</h2>
+    <table>
+      <tr><th>Action</th><th>Keyboard / Mouse</th><th>Touch</th><th>Gamepad</th></tr>
+      <tr><td>Select crew / customer / station</td><td>Left click</td><td>Tap</td><td>—</td></tr>
+      <tr><td>Pause</td><td><kbd>Space</kbd></td><td>⏸</td><td>Start</td></tr>
+      <tr><td>Speed 1× / 2× / 3×</td><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td><td>Buttons</td><td>RB</td></tr>
+      <tr><td>Pull the fryer</td><td><kbd>F</kbd></td><td>PULL</td><td>X</td></tr>
+      <tr><td>Dashboard</td><td><kbd>D</kbd></td><td>Stats</td><td>Back</td></tr>
+      <tr><td>Quick save</td><td><kbd>F5</kbd></td><td>—</td><td>—</td></tr>
+    </table>
+  </div>
+</section>
+
+<section style="background:var(--cream)">
+  <div class="wrap">
+    <h2>Brand colors</h2>
+    <p class="sub">The palette used across the game, UI and art.</p>
+    <div class="palette" id="palette"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Glaze &amp; Grind</b> · MIT licensed · by <a href="https://github.com/jaineil32624">Jaineil Rana</a> · <a href="https://github.com/jaineil32624/glaze-and-grind">Source on GitHub</a></p>
+    <p style="opacity:.6;font-size:13px">An original game — not affiliated with any real coffee or donut chain.</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lb" onclick="this.style.display='none'"><img id="lbimg" alt=""></div>
+
+<script>
+  const shots = [
+    ["02_morning_rush", "Morning rush"], ["03_staff_card", "Crew member stats & focus"], ["05_fryer_minigame", "Fryer minigame"],
+    ["04_dashboard", "Live dashboard"], ["06_rush_restock", "Rush deliveries"], ["07_evening", "Evening lights"],
+    ["08_day_summary", "End-of-day ledger"], ["10_management_staff", "Hiring & training"], ["11_management_upgrades", "Upgrades"],
+    ["12_management_stores", "Expand to new stores"], ["09_management_restock", "Restocking"], ["01_main_menu", "Main menu"],
+  ];
+  const art = [
+    ["store_exterior", "Store exterior"], ["store_interior", "Store interior"], ["employee_workstation", "Employee workstation"],
+    ["donut_production_line", "Donut production line"], ["coffee_machines", "Coffee machines"], ["upgrade_shop", "Upgrade shop"],
+    ["dashboard_ui", "Dashboard UI"], ["customer_types", "Customer types"],
+  ];
+  const palette = [
+    ["Glaze Pink", "#ff6f91"], ["Deep Pink", "#e8457a"], ["Cream", "#fff8ec"], ["Peach", "#ffe9d6"], ["Espresso Ink", "#3a2a22"],
+    ["Sky Blue", "#4f8cff"], ["Mint Green", "#2fae6b"], ["Sprinkle Yellow", "#ffd23f"], ["Maple Orange", "#ff8a3d"], ["Berry Purple", "#c45bff"],
+    ["Dough Gold", "#f0b860"], ["Chocolate", "#6b3a22"],
+  ];
+  function fill(id, list, dir) {
+    const el = document.getElementById(id);
+    for (const [f, cap] of list) {
+      const fig = document.createElement("figure");
+      const img = document.createElement("img");
+      img.loading = "lazy"; img.src = `${dir}/${f}.png`; img.alt = cap;
+      img.onerror = () => fig.remove();
+      fig.onclick = () => { document.getElementById("lbimg").src = img.src; document.getElementById("lb").style.display = "flex"; };
+      const c = document.createElement("figcaption"); c.textContent = cap;
+      fig.append(img, c); el.append(fig);
+    }
+  }
+  fill("shots", shots, "screenshots");
+  fill("art", art, "assets/concept");
+  const pal = document.getElementById("palette");
+  for (const [n, h] of palette) {
+    pal.insertAdjacentHTML("beforeend", `<div class="sw"><div style="background:${h}"></div><p>${n}<small>${h}</small></p></div>`);
+  }
+</script>
+</body>
+</html>

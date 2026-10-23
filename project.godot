@@ -10,7 +10,7 @@ config/description="Run a bustling donut and coffee shop: autonomous crew, rush 
 config/version="0.1.0"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://assets/icons/icon.svg"
+config/icon="res://assets/marketing/app_icon_512.png"
 boot_splash/bg_color=Color(1, 0.94, 0.86, 1)
 boot_splash/show_image=false
 

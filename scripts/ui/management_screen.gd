@@ -14,13 +14,13 @@ var _pages: Dictionary = {}
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var bg := ColorRect.new()
 	bg.color = Color("#ffe9d6")
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 	var margin := MarginContainer.new()
-	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	for side in ["left", "right", "top", "bottom"]:
 		margin.add_theme_constant_override("margin_" + side, 18)
 	add_child(margin)
@@ -28,7 +28,7 @@ func _ready() -> void:
 	margin.add_child(v)
 	_title = UIKit.label("", 28, UIKit.INK, true)
 	_money = UIKit.label("", 26, UIKit.GREEN, true)
-	v.add_child(UIKit.hbox([UIKit.label("🍩", 30), _title, UIKit.spacer(), _money]))
+	v.add_child(UIKit.hbox([UIKit.donut_icon(40), _title, UIKit.spacer(), _money]))
 	_forecast = UIKit.label("", 15, UIKit.MUTED)
 	v.add_child(_forecast)
 	_tabs = TabContainer.new()

@@ -1,7 +1,12 @@
-<p align="center"><img src="assets/icons/icon.svg" width="120" alt="Glaze & Grind icon"></p>
+<p align="center"><img src="assets/marketing/github_social_preview.png" alt="Glaze & Grind — Donut & Coffee Shop Tycoon"></p>
 
-<h1 align="center">Glaze & Grind</h1>
-<p align="center"><b>A donut & coffee shop tycoon for PC, Web and mobile — built in Godot 4.</b></p>
+<p align="center">
+  <a href="https://jaineil32624.github.io/glaze-and-grind/play/"><b>▶ Play in your browser</b></a> ·
+  <a href="https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.apk"><b>📱 Android APK</b></a> ·
+  <a href="https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.exe"><b>🪟 Windows</b></a> ·
+  <a href="https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.x86_64"><b>🐧 Linux</b></a> ·
+  <a href="https://jaineil32624.github.io/glaze-and-grind/"><b>🌐 Website</b></a>
+</p>
 
 <p align="center">
   <a href="../../actions/workflows/ci.yml"><img src="../../actions/workflows/ci.yml/badge.svg" alt="CI"></a>
@@ -55,7 +60,53 @@ Run a bustling donut shop through the morning rush. Your crew fries, glazes, bre
 
 ## Screenshots
 
-Screenshots can be generated straight from the game (no editor needed):
+| Morning rush | Crew stats & focus |
+|---|---|
+| ![Morning rush](docs/screenshots/02_morning_rush.png) | ![Staff card](docs/screenshots/03_staff_card.png) |
+| **Fryer minigame** | **Live dashboard** |
+| ![Fryer minigame](docs/screenshots/05_fryer_minigame.png) | ![Dashboard](docs/screenshots/04_dashboard.png) |
+| **Evening lights** | **End-of-day ledger** |
+| ![Evening](docs/screenshots/07_evening.png) | ![Summary](docs/screenshots/08_day_summary.png) |
+| **Upgrades** | **Expand to new stores** |
+| ![Upgrades](docs/screenshots/11_management_upgrades.png) | ![Stores](docs/screenshots/12_management_stores.png) |
+
+<details><summary>More screenshots</summary>
+
+| | |
+|---|---|
+| ![Main menu](docs/screenshots/01_main_menu.png) | ![Rush restock](docs/screenshots/06_rush_restock.png) |
+| ![Restock](docs/screenshots/09_management_restock.png) | ![Staff](docs/screenshots/10_management_staff.png) |
+
+</details>
+
+## Concept art
+
+| | |
+|---|---|
+| ![Store exterior](assets/concept/store_exterior.png) | ![Store interior](assets/concept/store_interior.png) |
+| ![Production line](assets/concept/donut_production_line.png) | ![Customer types](assets/concept/customer_types.png) |
+| ![Workstation](assets/concept/employee_workstation.png) | ![Coffee machines](assets/concept/coffee_machines.png) |
+| ![Upgrade shop](assets/concept/upgrade_shop.png) | ![Dashboard UI](assets/concept/dashboard_ui.png) |
+
+Every piece ships as **SVG (source) + PNG** in [`assets/concept/`](assets/concept). Store/marketing graphics (app icons 512/1024, Play Store feature graphic, Steam capsule, social preview) are in [`assets/marketing/`](assets/marketing). Regenerate with `python3 tools/make_concept_art.py && python3 tools/svg_to_png.py`.
+
+## Brand colors
+
+| Swatch | Name | Hex | Used for |
+|---|---|---|---|
+| ![](https://img.shields.io/badge/-%20%20%20%20-ff6f91?style=flat-square) | Glaze Pink | `#ff6f91` | Brand, uniforms, primary buttons |
+| ![](https://img.shields.io/badge/-%20%20%20%20-e8457a?style=flat-square) | Deep Pink | `#e8457a` | Headings, visors, accents |
+| ![](https://img.shields.io/badge/-%20%20%20%20-fff8ec?style=flat-square) | Cream | `#fff8ec` | Panels, aprons |
+| ![](https://img.shields.io/badge/-%20%20%20%20-3a2a22?style=flat-square) | Espresso Ink | `#3a2a22` | Text |
+| ![](https://img.shields.io/badge/-%20%20%20%20-4f8cff?style=flat-square) | Sky Blue | `#4f8cff` | Info, speed controls, staff levels |
+| ![](https://img.shields.io/badge/-%20%20%20%20-2fae6b?style=flat-square) | Mint Green | `#2fae6b` | Money, success, perfect fry zone |
+| ![](https://img.shields.io/badge/-%20%20%20%20-ffd23f?style=flat-square) | Sprinkle Yellow | `#ffd23f` | Highlights, focus rings |
+| ![](https://img.shields.io/badge/-%20%20%20%20-ff8a3d?style=flat-square) | Maple Orange | `#ff8a3d` | Warnings, fryer, stock |
+| ![](https://img.shields.io/badge/-%20%20%20%20-c45bff?style=flat-square) | Berry Purple | `#c45bff` | Influencers, events |
+
+### Regenerating screenshots
+
+Screenshots are captured straight from the game (no editor needed):
 
 ```bash
 xvfb-run -s "-screen 0 1280x720x24" godot --rendering-driver opengl3 --fixed-fps 60 \
@@ -71,7 +122,17 @@ They're written to `docs/screenshots/` (main menu, morning rush, staff card, das
 2. Clone this repo and open `project.godot` in Godot
 3. Press **F5**
 
-**Builds:** grab the latest from [Releases](../../releases), or from the artifacts of any [CI run](../../actions).
+**In your browser:** [jaineil32624.github.io/glaze-and-grind/play](https://jaineil32624.github.io/glaze-and-grind/play/) — no install, works on desktop and mobile browsers.
+
+**Downloads** (latest release):
+
+| Platform | Download | Notes |
+|---|---|---|
+| 📱 Android | [GlazeAndGrind.apk](https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.apk) | Allow "install unknown apps" |
+| 🪟 Windows | [GlazeAndGrind.exe](https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.exe) | Single file, just run it |
+| 🐧 Linux | [GlazeAndGrind.x86_64](https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind.x86_64) | `chmod +x` then run |
+| 🌐 Web | [GlazeAndGrind-web.zip](https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind-web.zip) | Host on any static server |
+| 📦 Source | [main.zip](https://github.com/jaineil32624/glaze-and-grind/archive/refs/heads/main.zip) | Open in Godot 4.3 |
 
 ## Controls
 

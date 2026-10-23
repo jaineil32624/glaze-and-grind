@@ -24,7 +24,7 @@ func _ready() -> void:
 	_ui.name = "UI"
 	add_child(_ui)
 	var root := Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.theme = UIKit.build_theme()
 	_ui.add_child(root)

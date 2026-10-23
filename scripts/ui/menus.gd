@@ -19,17 +19,17 @@ var _art: Control
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_bg = ColorRect.new()
-	_bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg)
 	_art = Control.new()
-	_art.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_art.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_art.draw.connect(_draw_art)
 	add_child(_art)
 	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(center)
 	var p := PanelContainer.new()
 	p.custom_minimum_size = Vector2(440, 0)
