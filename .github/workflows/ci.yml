@@ -83,7 +83,10 @@ jobs:
           mkdir -v -p builds/${{ matrix.dir }}
           godot --headless --path . --export-release "${{ matrix.preset }}" builds/${{ matrix.dir }}/${{ matrix.file }} 2>&1 | tee export.log
           ls -la builds/${{ matrix.dir }}
-          test -s builds/${{ matrix.dir }}/${{ matrix.file }} || (cat export.log; exit 1)
+          if [ ! -s builds/${{ matrix.dir }}/${{ matrix.file }} ]; then
+            grep -iE "error|fail|missing|invalid|keystore|sdk|template" export.log | head -30 | while IFS= read -r line; do echo "::error::$line"; done
+            exit 1
+          fi
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -92,8 +95,8 @@ jobs:
 
   pages:
     name: Deploy website + browser build
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
-    needs: export
+    if: always() && needs.test.result == 'success' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
+    needs: [test, export]
     runs-on: ubuntu-latest
     permissions:
       contents: write
