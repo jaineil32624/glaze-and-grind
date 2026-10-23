@@ -1,0 +1,22 @@
+# Godot
+.godot/
+.import/
+*.translation
+export_credentials.cfg
+*.tmp
+
+# Builds
+builds/
+*.apk
+*.aab
+*.exe
+*.x86_64
+*.pck
+
+# Signing
+*.keystore
+*.jks
+
+# OS
+.DS_Store
+Thumbs.db

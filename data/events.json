@@ -1,0 +1,23 @@
+{
+  "daily_event_chance": 0.45,
+  "events": [
+    {"id": "snow_day", "name": "Snow Day", "desc": "Fewer customers, but everyone wants something hot.",
+     "weight": 1.0, "min_day": 3, "traffic": 0.7, "hot_bias": 0.9, "color": "#bfe3ff"},
+    {"id": "holiday_rush", "name": "Holiday Rush", "desc": "Families everywhere! Expect big box orders.",
+     "weight": 0.8, "min_day": 4, "traffic": 1.35, "mix": {"family": 2.5}, "color": "#ff6b6b"},
+    {"id": "school_opening", "name": "School Opening", "desc": "Students pour in before and after class.",
+     "weight": 0.9, "min_day": 2, "traffic": 1.2, "mix": {"student": 3.0}, "color": "#ffd23f"},
+    {"id": "championship", "name": "Championship Night", "desc": "Huge evening surge after the big game.",
+     "weight": 0.7, "min_day": 5, "traffic": 1.0, "evening_surge": 2.2, "color": "#4f8cff"},
+    {"id": "breakdown", "name": "Equipment Breakdown", "desc": "A machine broke down. Repair it from its station card.",
+     "weight": 1.0, "min_day": 3, "breakdown": true, "repair_cost": 120, "color": "#ff8a3d"},
+    {"id": "power_outage", "name": "Power Outage", "desc": "The fryer and coffee bar lose power for an hour around midday.",
+     "weight": 0.5, "min_day": 6, "outage": {"start": 11.5, "end": 12.5, "stations": ["fryer", "coffee"]}, "color": "#555555"},
+    {"id": "inspection", "name": "Health Inspection", "desc": "An inspector visits today. Keep the store clean and waste low.",
+     "weight": 0.8, "min_day": 3, "inspection": true, "color": "#2fae6b"},
+    {"id": "sick_day", "name": "Sick Day", "desc": "One of your crew called in sick.",
+     "weight": 0.7, "min_day": 4, "sick": true, "color": "#9aa6b2"},
+    {"id": "viral", "name": "Viral Post", "desc": "A photo of your donuts blew up online. Brace yourself!",
+     "weight": 0.5, "min_day": 5, "traffic": 1.6, "mix": {"influencer": 3.0, "student": 1.5}, "color": "#c45bff"}
+  ]
+}

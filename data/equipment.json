@@ -1,0 +1,32 @@
+{
+  "stations": [
+    {"id": "mixer",   "name": "Dough Mixer",       "desc": "Mixes and kneads dough. Faster mixers keep the line fed.",
+     "costs": [0, 350, 900, 2200], "speed": [1.0, 1.3, 1.6, 2.0], "quality": [0, 0, 0.03, 0.05], "maintenance": [4, 6, 9, 13]},
+    {"id": "fryer",   "name": "Fryer",             "desc": "Fries batches of rings. Upgrades fry faster and widen the perfect window.",
+     "costs": [0, 450, 1200, 3000], "speed": [1.0, 1.25, 1.5, 1.9], "quality": [0, 0.03, 0.06, 0.1], "maintenance": [6, 8, 12, 18]},
+    {"id": "glaze",   "name": "Glaze & Topping Table", "desc": "Cools, ices and tops batches.",
+     "costs": [0, 300, 800, 2000], "speed": [1.0, 1.3, 1.6, 2.0], "quality": [0, 0.03, 0.05, 0.08], "maintenance": [3, 5, 7, 10]},
+    {"id": "coffee",  "name": "Espresso Machine",  "desc": "Hot coffee, tea and espresso drinks.",
+     "costs": [0, 600, 1500, 3800], "speed": [1.0, 1.25, 1.55, 1.9], "quality": [0, 0.04, 0.08, 0.12], "maintenance": [6, 9, 13, 19], "min_rank": [0, 1, 1, 2]},
+    {"id": "cold",    "name": "Cold Bar",          "desc": "Iced drinks and refreshers.",
+     "costs": [0, 400, 1000, 2600], "speed": [1.0, 1.3, 1.6, 1.9], "quality": [0, 0.03, 0.06, 0.09], "maintenance": [4, 6, 9, 13]},
+    {"id": "register", "name": "Register",         "desc": "Faster POS terminals take orders quicker.",
+     "costs": [0, 250, 700], "speed": [1.0, 1.35, 1.7], "quality": [0, 0, 0], "maintenance": [2, 3, 4]},
+    {"id": "pickup",  "name": "Pickup Counter",    "desc": "Bagging and boxing station.",
+     "costs": [0, 250, 650], "speed": [1.0, 1.35, 1.7], "quality": [0, 0, 0], "maintenance": [2, 3, 4]}
+  ],
+  "items": [
+    {"id": "register2",   "name": "Second Register",  "cost": 900,  "maintenance": 4, "min_rank": 1,
+     "desc": "A second order point. Cuts the queue during rushes."},
+    {"id": "blender",     "name": "Blender",          "cost": 700,  "maintenance": 3, "min_rank": 2,
+     "desc": "Unlocks Frozen Coffee on the cold bar."},
+    {"id": "break_room",  "name": "Comfy Break Room", "cost": 600,  "maintenance": 2, "min_rank": 1,
+     "desc": "Staff recover from stress twice as fast."},
+    {"id": "auto_glazer", "name": "Auto-Glazer",      "cost": 2500, "maintenance": 10, "min_rank": 3,
+     "desc": "Finishes fried batches automatically, no staff needed."},
+    {"id": "smart_inventory", "name": "Smart Inventory", "cost": 1800, "maintenance": 6, "min_rank": 4,
+     "desc": "Automatically restocks every ingredient to its target at the end of each day."},
+    {"id": "big_case",    "name": "Bigger Display Case", "cost": 500, "maintenance": 1, "min_rank": 0,
+     "desc": "Raises maximum par levels so you can bake ahead for rushes."}
+  ]
+}

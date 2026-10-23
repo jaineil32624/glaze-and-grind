@@ -1,0 +1,28 @@
+{
+  "customers": [
+    {"id": "student", "name": "Student", "body": "#4f8cff", "accent": "#ffd23f",
+     "patience": 75, "spend": 0.8, "drinks": [1, 1], "donuts": [0, 2], "box_chance": 0.05,
+     "favorites": ["iced_coffee", "refresher", "glazed", "sprinkle"], "tip": 0.6, "rating_weight": 1.0,
+     "loyalty": 0.5, "weight": 1.0},
+    {"id": "business", "name": "Business Worker", "body": "#3b4a63", "accent": "#e8e8e8",
+     "patience": 55, "spend": 1.3, "drinks": [1, 1], "donuts": [0, 1], "box_chance": 0.0,
+     "favorites": ["latte", "espresso", "hot_coffee", "chocolate"], "tip": 1.0, "rating_weight": 1.0,
+     "loyalty": 0.7, "weight": 1.0, "hot_bias": 0.8},
+    {"id": "family", "name": "Family", "body": "#2fae6b", "accent": "#ffb347",
+     "patience": 110, "spend": 1.4, "drinks": [1, 3], "donuts": [3, 6], "box_chance": 1.0,
+     "favorites": ["sprinkle", "chocolate", "jelly", "refresher"], "tip": 1.0, "rating_weight": 1.2,
+     "loyalty": 0.6, "weight": 0.7},
+    {"id": "tourist", "name": "Tourist", "body": "#ff8a3d", "accent": "#7ad3ff",
+     "patience": 100, "spend": 1.1, "drinks": [1, 2], "donuts": [1, 3], "box_chance": 0.4,
+     "favorites": ["maple", "cappuccino", "frozen_coffee", "jelly"], "tip": 1.4, "rating_weight": 1.0,
+     "loyalty": 0.2, "weight": 0.6, "adventurous": true},
+    {"id": "influencer", "name": "Influencer", "body": "#c45bff", "accent": "#ff5fa2",
+     "patience": 80, "spend": 1.0, "drinks": [1, 1], "donuts": [1, 2], "box_chance": 0.0,
+     "favorites": ["frozen_coffee", "refresher", "sprinkle"], "tip": 1.0, "rating_weight": 2.0,
+     "loyalty": 0.3, "weight": 0.25, "special": "viral"},
+    {"id": "critic", "name": "Food Critic", "body": "#262626", "accent": "#c9a227",
+     "patience": 85, "spend": 1.2, "drinks": [1, 1], "donuts": [1, 2], "box_chance": 0.0,
+     "favorites": ["espresso", "glazed", "cappuccino"], "tip": 0.8, "rating_weight": 5.0,
+     "loyalty": 0.1, "weight": 0.06, "special": "critic"}
+  ]
+}

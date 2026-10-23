@@ -1,0 +1,108 @@
+{
+  "ingredients": [
+    {
+      "id": "flour",
+      "name": "Flour",
+      "pack": 20,
+      "pack_cost": 9.0,
+      "start": 40,
+      "icon": "#efe6d2"
+    },
+    {
+      "id": "sugar",
+      "name": "Sugar",
+      "pack": 30,
+      "pack_cost": 8.0,
+      "start": 90,
+      "icon": "#ffffff"
+    },
+    {
+      "id": "yeast",
+      "name": "Yeast",
+      "pack": 20,
+      "pack_cost": 6.0,
+      "start": 25,
+      "icon": "#d8c48a"
+    },
+    {
+      "id": "milk",
+      "name": "Milk",
+      "pack": 20,
+      "pack_cost": 10.0,
+      "start": 50,
+      "icon": "#f4f8ff"
+    },
+    {
+      "id": "beans",
+      "name": "Coffee Beans",
+      "pack": 30,
+      "pack_cost": 18.0,
+      "start": 60,
+      "icon": "#5a3520"
+    },
+    {
+      "id": "chocolate",
+      "name": "Chocolate",
+      "pack": 20,
+      "pack_cost": 12.0,
+      "start": 35,
+      "icon": "#6b3a22"
+    },
+    {
+      "id": "sprinkles",
+      "name": "Sprinkles",
+      "pack": 30,
+      "pack_cost": 7.0,
+      "start": 30,
+      "icon": "#ff8fb4"
+    },
+    {
+      "id": "syrup",
+      "name": "Flavor Syrup",
+      "pack": 20,
+      "pack_cost": 9.0,
+      "start": 25,
+      "icon": "#c98a2f"
+    },
+    {
+      "id": "fruit",
+      "name": "Fruit Base",
+      "pack": 20,
+      "pack_cost": 11.0,
+      "start": 25,
+      "icon": "#e0457b"
+    },
+    {
+      "id": "tea",
+      "name": "Tea",
+      "pack": 30,
+      "pack_cost": 6.0,
+      "start": 20,
+      "icon": "#b8862f"
+    },
+    {
+      "id": "ice",
+      "name": "Ice",
+      "pack": 40,
+      "pack_cost": 4.0,
+      "start": 60,
+      "icon": "#bfe8ff"
+    },
+    {
+      "id": "cups",
+      "name": "Cups",
+      "pack": 50,
+      "pack_cost": 7.0,
+      "start": 90,
+      "icon": "#ffffff"
+    },
+    {
+      "id": "boxes",
+      "name": "Boxes",
+      "pack": 25,
+      "pack_cost": 6.0,
+      "start": 25,
+      "icon": "#f7d9a8"
+    }
+  ]
+}

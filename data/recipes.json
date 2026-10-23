@@ -1,0 +1,45 @@
+{
+  "dough": {
+    "batch_size": 12,
+    "ingredients": {"flour": 2, "sugar": 1, "yeast": 1, "milk": 1},
+    "time": 6.0
+  },
+  "fry": {
+    "batch_size": 6,
+    "time": 7.0,
+    "perfect": 0.62,
+    "window": 0.12
+  },
+  "donuts": [
+    {"id": "glazed", "name": "Classic Glazed", "price": 1.79, "color": "#f3c56b", "topping": "#fff3d6",
+     "finish": {"sugar": 1}, "par": 10, "unlock_rank": 0},
+    {"id": "chocolate", "name": "Chocolate Frosted", "price": 1.99, "color": "#f0b860", "topping": "#6b3a22",
+     "finish": {"chocolate": 1}, "par": 8, "unlock_rank": 0},
+    {"id": "sprinkle", "name": "Strawberry Sprinkle", "price": 2.09, "color": "#f0b860", "topping": "#ff8fb4",
+     "finish": {"sugar": 1, "sprinkles": 1}, "par": 8, "unlock_rank": 0, "sprinkles": true},
+    {"id": "maple", "name": "Maple Bar", "price": 2.29, "color": "#e8a94f", "topping": "#b8732f",
+     "finish": {"syrup": 1}, "par": 6, "unlock_rank": 1},
+    {"id": "jelly", "name": "Raspberry Jelly", "price": 2.39, "color": "#f3c56b", "topping": "#ffffff",
+     "finish": {"fruit": 1, "sugar": 1}, "par": 6, "unlock_rank": 2, "filled": "#c21e4a"}
+  ],
+  "drinks": [
+    {"id": "hot_coffee", "name": "Hot Coffee", "price": 2.49, "station": "coffee", "time": 3.5, "skill": 1,
+     "ingredients": {"beans": 1, "cups": 1}, "hot": true, "color": "#5a3520", "unlock_rank": 0},
+    {"id": "tea", "name": "Hot Tea", "price": 2.29, "station": "coffee", "time": 3.0, "skill": 1,
+     "ingredients": {"tea": 1, "cups": 1}, "hot": true, "color": "#b8862f", "unlock_rank": 0},
+    {"id": "espresso", "name": "Espresso", "price": 2.99, "station": "coffee", "time": 4.0, "skill": 2,
+     "ingredients": {"beans": 1, "cups": 1}, "hot": true, "color": "#3a2014", "unlock_rank": 0},
+    {"id": "latte", "name": "Latte", "price": 4.29, "station": "coffee", "time": 6.5, "skill": 2,
+     "ingredients": {"beans": 1, "milk": 1, "cups": 1}, "hot": true, "color": "#c99a6b", "unlock_rank": 0},
+    {"id": "cappuccino", "name": "Cappuccino", "price": 4.19, "station": "coffee", "time": 6.0, "skill": 2,
+     "ingredients": {"beans": 1, "milk": 1, "cups": 1}, "hot": true, "color": "#d8b48a", "unlock_rank": 1},
+    {"id": "iced_coffee", "name": "Iced Coffee", "price": 3.49, "station": "cold", "time": 4.0, "skill": 1,
+     "ingredients": {"beans": 1, "ice": 1, "cups": 1}, "hot": false, "color": "#8a5a36", "unlock_rank": 0},
+    {"id": "refresher", "name": "Berry Refresher", "price": 3.79, "station": "cold", "time": 4.5, "skill": 1,
+     "ingredients": {"fruit": 1, "ice": 1, "cups": 1}, "hot": false, "color": "#e0457b", "unlock_rank": 0},
+    {"id": "frozen_coffee", "name": "Frozen Coffee", "price": 4.99, "station": "cold", "time": 7.0, "skill": 3,
+     "ingredients": {"beans": 1, "milk": 1, "ice": 2, "cups": 1}, "hot": false, "color": "#b98c62",
+     "unlock_rank": 0, "requires_equipment": "blender"}
+  ],
+  "flavor_shot": {"price": 0.5, "ingredients": {"syrup": 1}, "chance": 0.25}
+}

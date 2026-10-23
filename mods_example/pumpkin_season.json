@@ -1,0 +1,18 @@
+{
+  "name": "Pumpkin Season",
+  "donuts": [
+    {"id": "pumpkin", "name": "Pumpkin Spice Donut", "price": 2.49, "color": "#e8a94f", "topping": "#e07b2a",
+     "finish": {"sugar": 1, "syrup": 1}, "par": 6, "unlock_rank": 0}
+  ],
+  "drinks": [
+    {"id": "pumpkin_latte", "name": "Pumpkin Latte", "price": 4.79, "station": "coffee", "time": 7.0, "skill": 2,
+     "ingredients": {"beans": 1, "milk": 1, "syrup": 1, "cups": 1}, "hot": true, "color": "#c97b3a", "unlock_rank": 0}
+  ],
+  "customers": [
+    {"id": "student", "favorites": ["pumpkin_latte", "pumpkin", "iced_coffee"]}
+  ],
+  "events": [
+    {"id": "harvest_fest", "name": "Harvest Festival", "desc": "Everyone wants something pumpkin-flavoured.",
+     "weight": 1.0, "min_day": 2, "traffic": 1.3, "mix": {"family": 1.8, "tourist": 1.5}, "color": "#e07b2a"}
+  ]
+}
