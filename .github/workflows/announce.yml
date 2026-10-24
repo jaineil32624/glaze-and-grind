@@ -1,0 +1,23 @@
+name: Announce on Discord
+
+# Run by hand from the Actions tab to (re)post a release card to Discord.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to announce (e.g. v0.1.0-alpha)"
+        required: true
+        default: "v0.1.0-alpha"
+      note:
+        description: "Optional message (leave blank for the default)"
+        required: false
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post release card
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python3 .github/scripts/discord_announce.py "${{ inputs.tag }}" "${{ inputs.note }}"
