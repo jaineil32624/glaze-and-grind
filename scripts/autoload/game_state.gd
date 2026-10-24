@@ -21,6 +21,20 @@ var started: bool = false
 func _ready() -> void:
 	rng.randomize()
 	_setup_input()
+	_setup_font_fallback()
+
+
+## Web builds have no system fonts, so symbols like ★ ♥ → ✕ would render as
+## boxes. Bundle DejaVu Sans as a fallback behind the default font.
+func _setup_font_fallback() -> void:
+	var fb: Font = load("res://assets/fonts/DejaVuSans-Bold.ttf")
+	if fb == null:
+		return
+	var base: Font = ThemeDB.fallback_font
+	if base != null and not base.fallbacks.has(fb):
+		var list := base.fallbacks.duplicate()
+		list.append(fb)
+		base.fallbacks = list
 
 
 # --- Profile lifecycle --------------------------------------------------------

@@ -115,7 +115,7 @@ func _build_top_bar() -> void:
 	_event_chip.visible = false
 	h.add_child(_event_chip)
 	h.add_child(UIKit.spacer())
-	for s in [[0.0, "⏸"], [1.0, "1×"], [2.0, "2×"], [3.0, "3×"]]:
+	for s in [[0.0, "II"], [1.0, "1×"], [2.0, "2×"], [3.0, "3×"]]:
 		var spd: float = s[0]
 		var b := UIKit.button(s[1], func(): _set_speed(spd), UIKit.BLUE, 48)
 		b.toggle_mode = false
@@ -123,7 +123,7 @@ func _build_top_bar() -> void:
 		h.add_child(b)
 	h.add_child(UIKit.button("Stock", _toggle_restock, Color("#ff8a3d")))
 	h.add_child(UIKit.button("Stats", toggle_dashboard, Color("#6c5ce7")))
-	h.add_child(UIKit.button("☰", func(): menu_requested.emit(), UIKit.INK, 48))
+	h.add_child(UIKit.button("Menu", func(): menu_requested.emit(), UIKit.INK, 48))
 
 
 func _set_speed(s: float) -> void:

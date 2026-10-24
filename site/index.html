@@ -38,16 +38,16 @@
   section { padding: 56px 0; }
   h2 { font-size: 34px; margin: 0 0 8px; }
   .sub { color: var(--muted); margin: 0 0 28px; }
-  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
   .card { background: #fff; border-radius: 18px; padding: 22px; box-shadow: 0 6px 18px rgba(0,0,0,.07); }
   .card h3 { margin: 0 0 6px; font-size: 20px; }
   .card p { margin: 0; color: var(--muted); }
   .dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: middle; }
-  .gallery { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+  .gallery { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); }
   .gallery figure { margin: 0; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,.07); cursor: zoom-in; }
   .gallery img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
   .gallery figcaption { padding: 10px 14px; font-weight: 700; font-size: 14px; }
-  .downloads { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .downloads { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); }
   .dlcard { background: #fff; border-radius: 18px; padding: 20px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.07); border-bottom: 6px solid var(--c); display: block; }
   .dlcard b { display: block; font-size: 20px; }
   .dlcard span { color: var(--muted); font-size: 14px; }
@@ -56,7 +56,7 @@
   .sw div { height: 72px; }
   .sw p { margin: 0; padding: 8px 10px; font-size: 13px; font-weight: 700; }
   .sw small { display: block; color: var(--muted); font-weight: 500; }
-  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
+  table { width: 100%; min-width: 520px; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
   td, th { padding: 10px 14px; text-align: left; border-bottom: 1px solid #f2e3d3; }
   th { background: var(--cream); }
   kbd { background: var(--cream); border: 1px solid #e2cdb8; border-bottom-width: 3px; border-radius: 6px; padding: 1px 7px; font-size: 13px; }
@@ -132,7 +132,7 @@
 <section>
   <div class="wrap">
     <h2>Controls</h2>
-    <table>
+    <div style="overflow-x:auto;border-radius:14px"><table>
       <tr><th>Action</th><th>Keyboard / Mouse</th><th>Touch</th><th>Gamepad</th></tr>
       <tr><td>Select crew / customer / station</td><td>Left click</td><td>Tap</td><td>—</td></tr>
       <tr><td>Pause</td><td><kbd>Space</kbd></td><td>⏸</td><td>Start</td></tr>
@@ -140,7 +140,7 @@
       <tr><td>Pull the fryer</td><td><kbd>F</kbd></td><td>PULL</td><td>X</td></tr>
       <tr><td>Dashboard</td><td><kbd>D</kbd></td><td>Stats</td><td>Back</td></tr>
       <tr><td>Quick save</td><td><kbd>F5</kbd></td><td>—</td><td>—</td></tr>
-    </table>
+    </table></div>
   </div>
 </section>
 
@@ -159,7 +159,7 @@
   </div>
 </footer>
 
-<div class="lightbox" id="lb" onclick="this.style.display='none'"><img id="lbimg" alt=""></div>
+<div class="lightbox" id="lb" onclick="this.style.display='none'"><img id="lbimg" alt="Enlarged screenshot" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="></div>
 
 <script>
   const shots = [

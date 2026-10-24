@@ -82,7 +82,7 @@ func show_summary(s: Dictionary) -> void:
 	# Highlights
 	var notes: Array = []
 	if s.get("ranked_up", false):
-		notes.append(["🎉 Promoted to %s! New upgrades and stores may be unlocked." % Game.rank_title(s["rank"]), Color("#c9a227")])
+		notes.append(["★ Promoted to %s! New upgrades and stores may be unlocked." % Game.rank_title(s["rank"]), Color("#c9a227")])
 	if s.get("critic", "") != "":
 		notes.append(["Food critic left a review: " + s["critic"], Color("#c9a227")])
 	if s.get("viral", false):

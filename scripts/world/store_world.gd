@@ -289,7 +289,7 @@ func _update_lighting() -> void:
 		_modulate.color = clock.light_color()
 	var on := clock.lamps_on()
 	for l in _lamps:
-		l.energy = lerpf(l.energy, 0.55 if on else 0.0, 0.05)
+		l.energy = lerpf(l.energy, 0.35 if on else 0.0, 0.05)
 
 
 func _update_power_and_breakdowns() -> void:

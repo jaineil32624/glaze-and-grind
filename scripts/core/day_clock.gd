@@ -105,4 +105,4 @@ func sky_color() -> Color:
 
 
 func lamps_on() -> bool:
-	return hour >= 17.8 or hour < 6.8
+	return hour >= 17.8
