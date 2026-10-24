@@ -134,6 +134,15 @@ They're written to `docs/screenshots/` (main menu, morning rush, staff card, das
 | 🌐 Web | [GlazeAndGrind-web.zip](https://github.com/jaineil32624/glaze-and-grind/releases/latest/download/GlazeAndGrind-web.zip) | Host on any static server |
 | 📦 Source | [main.zip](https://github.com/jaineil32624/glaze-and-grind/archive/refs/heads/main.zip) | Open in Godot 4.3 |
 
+### 🐳 Run it with Docker
+
+The browser build is published as a container package on GitHub:
+
+```bash
+docker run --rm -p 8080:80 ghcr.io/jaineil32624/glaze-and-grind:latest
+# open http://localhost:8080
+```
+
 ## Controls
 
 | Action | Keyboard / Mouse | Touch | Gamepad |

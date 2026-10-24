@@ -123,6 +123,36 @@ jobs:
           publish_dir: ./public
           force_orphan: true
 
+  container:
+    name: Publish container package
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+    needs: export
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: GlazeAndGrind-web
+          path: web
+      - name: Version
+        run: echo "VER=$(grep -oP 'config/version="\K[^"]+' project.godot)" >> $GITHUB_ENV
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ env.VER }}
+
   release:
     name: GitHub Release
     # Every push to main publishes/updates the release for the version in project.godot.
